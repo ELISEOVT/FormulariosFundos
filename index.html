@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS FUNDOS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <h1>FORMULARIOS FUNDOS</h1>
+        <div class="user-info">
+            <span id="username-display">Usuario</span>
+            <button id="logout-btn" class="btn-logout">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <!-- Contenedor de pestañas que se generará dinámicamente -->
+    <div class="tabs" id="tabs-container">
+        <!-- Las pestañas se generarán aquí con JavaScript -->
+    </div>
+
+    <!-- Contenedor donde se cargarán los formularios -->
+    <div id="form-container">
+        <div class="loading">Cargando formulario...</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Sistema de Formularios Fundos</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <!-- Mis scripts propios -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

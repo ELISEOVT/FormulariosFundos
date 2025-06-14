@@ -1,0 +1,179 @@
+/* Estilos generales */
+html {
+    height: 100%;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    /* Propiedades para fijar el footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* Hacer que el contenido principal ocupe todo el espacio disponible */
+#form-container {
+    flex: 1 0 auto;
+}
+/* Estilos del encabezado */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Estilos de las pestañas */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    border-bottom: 3px solid #003366;
+    color: #003366;
+}
+
+/* Estilos del contenedor de formularios */
+#form-container {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* Estilos de los formularios */
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #003366;
+    color: white;
+}
+
+button[type="reset"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    padding: 8px 0;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    color: #777;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+footer p {
+    margin: 0;  /* Elimina espacios del párrafo */
+}
+
+/* Estilos para la información de usuario en el header */
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    color: white;
+}
+
+#username-display {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.btn-logout {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

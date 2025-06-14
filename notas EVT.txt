@@ -1,0 +1,25 @@
+1. assets/: Contiene recursos estáticos como imágenes y fuentes
+Mantener estos archivos separados facilita la gestión de caché
+
+2. css/: Todos los archivos de estilos
+Podrías añadir subcarpetas si el proyecto crece (ej: components/, pages/)
+
+3 js/: Archivos JavaScript separados por funcionalidad
+Mantén cada archivo con una responsabilidad específica
+
+4. forms/: Cada formulario en un archivo HTML independiente
+Esta es la clave para la carga dinámica que implementamos
+
+5. data/: (Opcional) Para archivos JSON o configuraciones
+Útil si tienes listas de opciones, configuraciones, etc.
+
+VENTAJAS
+Modularidad: Cada componente está separado y es fácil de encontrar
+
+Mantenimiento: Puedes modificar un formulario sin afectar a los demás
+
+Trabajo en equipo: Diferentes desarrolladores pueden trabajar en diferentes formularios
+
+Escalabilidad: Fácil añadir nuevos formularios o funcionalidades
+
+Organización: Estructura clara que cualquier desarrollador puede entender
