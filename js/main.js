@@ -13,28 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout);
     }
-// =================================================================
-//     INICIO: Tu código de Firebase va pegado en esta sección
-// Reemplaza este bloque de ejemplo con TUS propias claves de Firebase
-// =================================================================
-const firebaseConfig = {
-    apiKey: "AIzaSyDUItFotBBQjM4Uuh1DYkm5ARecZ_utooo",
-    authDomain: "formularios-fundos.firebaseapp.com",
-    projectId: "formularios-fundos",
-    storageBucket: "formularios-fundos.firebasestorage.app",
-    messagingSenderId: "884518397631",
-    appId: "1:884518397631:web:85b14f9c0c1ee451fc880a"
-  };
-  // =================================================================
-  //     FIN: Tu código de Firebase
-  // =================================================================
-  
-  
+// La configuración de Firebase se carga en firebaseConfig.js
+
   // El resto del código no necesita ninguna modificación.
   // Simplemente se encarga de la lógica de la página.
-  
-  // Inicializar Firebase con la configuración de arriba
-  firebase.initializeApp(firebaseConfig);
+
   const auth = firebase.auth();
   
   // Referencias a los elementos del DOM (los divs, forms, etc. del HTML)
