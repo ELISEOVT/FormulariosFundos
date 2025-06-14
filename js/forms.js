@@ -1,9 +1,9 @@
 // Manejo de la lista de formularios y carga de embed
 
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = [
+document.addEventListener('DOMContentLoaded', () => {
+    const formsList = [
         {
-            id: 'inspeccion',
+            id: 'for1',
             title: 'INSPECCIÓN',
             embed: 'https://tally.so/embed/nrbv8o?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
         },
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!listContainer || !formContainer) return;
 
-    forms.forEach((form, index) => {
+    formsList.forEach((form, index) => {
         const button = document.createElement('button');
         button.className = 'tab-button';
         button.textContent = form.title;
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.setAttribute('title', form.title);
         formContainer.appendChild(iframe);
 
-        if (typeof Tally !== 'undefined') {
+        if (window.Tally) {
             Tally.loadEmbeds();
         }
     }
