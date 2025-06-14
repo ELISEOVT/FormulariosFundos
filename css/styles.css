@@ -31,9 +31,21 @@ header {
     margin-right: 20px;
 }
 
-h1 {
-    margin: 0;
-    font-size: 24px;
+
+/* Botón de navegación principal */
+.nav-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Estilos de las pestañas */

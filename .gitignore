@@ -1,0 +1,10 @@
+# Editor files
+*.swp
+*.tmp
+
+# Dependency directories
+node_modules/
+
+# Firebase environment (no se debe subir claves sensibles)
+.env
+

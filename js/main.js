@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Definición de los formularios disponibles
   const forms = [
+    { id: 'inspeccion', title: 'INSPECCIÓN DE VEHÍCULOS', file: 'forms/inspeccion.html' },
     { id: 'form1', title: 'Registro', file: 'forms/form1.html' },
     { id: 'form2', title: 'Encuesta', file: 'forms/form2.html' }
   ];
@@ -53,10 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(r => r.text())
       .then(html => {
         formContainer.innerHTML = html;
+
+        // Asignar manejo de envío al nuevo formulario cargado
+        const loadedForm = formContainer.querySelector('form');
+        if (loadedForm) {
+          loadedForm.addEventListener('submit', handleFormSubmit);
+        }
       })
       .catch(err => {
         console.error('Error al cargar el formulario', err);
         formContainer.innerHTML = '<div class="error">No se pudo cargar el formulario.</div>';
       });
+  }
+
+  // Manejar el envío de cualquier formulario cargado
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const dataObj = Object.fromEntries(formData.entries());
+    console.log('Datos enviados:', dataObj);
+    alert('Formulario enviado correctamente');
+    event.target.reset();
   }
 });
