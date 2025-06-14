@@ -3,8 +3,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const forms = [
         {
-            id: 'for1',
-            title: 'FOR1',
+            id: 'inspeccion',
+            title: 'INSPECCIÓN',
             embed: 'https://tally.so/embed/nrbv8o?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
         },
         {
