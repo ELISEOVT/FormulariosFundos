@@ -1,81 +1,62 @@
+// Lógica de carga dinámica de formularios y manejo de pestañas
 
-// Cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar nombre de usuario
-    const usernameDisplay = document.getElementById('username-display');
-    if (usernameDisplay) {
-        const username = localStorage.getItem('username') || 'Usuario';
-        usernameDisplay.textContent = username;
+document.addEventListener('DOMContentLoaded', () => {
+  // Mostrar nombre de usuario almacenado tras el login
+  const usernameDisplay = document.getElementById('username-display');
+  if (usernameDisplay) {
+    usernameDisplay.textContent = localStorage.getItem('username') || 'Usuario';
+  }
+
+  // Botón para cerrar sesión
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', logout);
+  }
+
+  // Definición de los formularios disponibles
+  const forms = [
+    { id: 'form1', title: 'Registro', file: 'forms/form1.html' },
+    { id: 'form2', title: 'Encuesta', file: 'forms/form2.html' }
+  ];
+
+  const tabsContainer = document.getElementById('tabs-container');
+  const formContainer = document.getElementById('form-container');
+
+  // Crear pestañas
+  forms.forEach((form, index) => {
+    const button = document.createElement('button');
+    button.className = 'tab-button';
+    button.textContent = form.title;
+    button.dataset.formId = form.id;
+    if (index === 0) {
+      button.classList.add('active');
     }
-    
-    // Configurar botón de logout
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logout);
+    button.addEventListener('click', () => loadForm(form, button));
+    tabsContainer.appendChild(button);
+  });
+
+  // Cargar el primer formulario por defecto
+  if (forms.length > 0) {
+    loadForm(forms[0], tabsContainer.querySelector('.tab-button'));
+  }
+
+  // Función para cargar el formulario seleccionado
+  function loadForm(form, button) {
+    const active = tabsContainer.querySelector('.active');
+    if (active) {
+      active.classList.remove('active');
     }
-// La configuración de Firebase se carga en firebaseConfig.js
+    button.classList.add('active');
 
-  // El resto del código no necesita ninguna modificación.
-  // Simplemente se encarga de la lógica de la página.
-
-  const auth = firebase.auth();
-  
-  // Referencias a los elementos del DOM (los divs, forms, etc. del HTML)
-  const loginView = document.getElementById('login-view');
-  const dashboardView = document.getElementById('dashboard-view');
-  const loginForm = document.getElementById('login-form');
-  const loginError = document.getElementById('login-error');
-  const userEmailDisplay = document.getElementById('user-email');
-  const logoutButton = document.getElementById('logout-button');
-  
-  // --- MANEJADOR DEL FORMULARIO DE LOGIN ---
-  // Esta parte del código "escucha" cuando el usuario hace clic en el botón "Entrar"
-  loginForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // Evita que la página se recargue
-      
-      // Obtenemos el correo y la contraseña que el usuario escribió
-      const email = document.getElementById('login-email').value;
-      const password = document.getElementById('login-password').value;
-      
-      loginError.textContent = ''; // Limpiamos cualquier error anterior
-  
-      // Usamos Firebase para intentar iniciar sesión con esos datos
-      auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-              // Si Firebase dice que los datos son correctos, no hacemos nada aquí.
-              // La función de abajo (onAuthStateChanged) se encargará de todo.
-              console.log('Usuario autenticado:', userCredential.user.email);
-          })
-          .catch((error) => {
-              // Si Firebase dice que hay un error, mostramos un mensaje.
-              loginError.textContent = 'El correo o la contraseña son incorrectos.';
-              console.error('Error de autenticación:', error.message);
-          });
-  });
-  
-  // --- OBSERVADOR DEL ESTADO DE AUTENTICACIÓN ---
-  // Esta es la parte más importante. Es un "vigilante" que siempre está activo.
-  // Se ejecuta automáticamente cuando alguien inicia o cierra sesión.
-  auth.onAuthStateChanged((user) => {
-      if (user) {
-          // Si el vigilante detecta un usuario (alguien ha iniciado sesión)...
-          // Ocultamos la vista de login y mostramos la de bienvenida.
-          loginView.classList.add('hidden');
-          dashboardView.classList.remove('hidden');
-          userEmailDisplay.textContent = user.email; // Mostramos el email del usuario
-      } else {
-          // Si el vigilante no detecta ningún usuario (nadie ha iniciado sesión o ha cerrado sesión)...
-          // Mostramos la vista de login y ocultamos la de bienvenida.
-          loginView.classList.remove('hidden');
-          dashboardView.classList.add('hidden');
-      }
-  });
-  
-  // --- MANEJADOR DEL BOTÓN DE LOGOUT ---
-  // Le decimos al botón "Cerrar Sesión" qué hacer cuando le hagan clic.
-  logoutButton.addEventListener('click', () => {
-      // Le decimos a Firebase que cierre la sesión del usuario actual.
-      auth.signOut();
-  });
-  
+    formContainer.innerHTML = '<div class="loading">Cargando formulario...</div>';
+    fetch(form.file)
+      .then(r => r.text())
+      .then(html => {
+        formContainer.innerHTML = html;
+      })
+      .catch(err => {
+        console.error('Error al cargar el formulario', err);
+        formContainer.innerHTML = '<div class="error">No se pudo cargar el formulario.</div>';
+      });
+  }
 });
