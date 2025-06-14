@@ -3,9 +3,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const forms = [
         {
-            id: 'inspeccion',
-            title: 'INSPECCIÓN',
+            id: 'for1',
+            title: 'FOR1',
             embed: 'https://tally.so/embed/nrbv8o?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
+        },
+        {
+            id: 'for2',
+            title: 'FOR2',
+            embed: ''
+        },
+        {
+            id: 'for3',
+            title: 'FOR3',
+            embed: ''
         }
     ];
 
@@ -43,10 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.setAttribute('marginwidth', '0');
         iframe.setAttribute('title', form.title);
         formContainer.appendChild(iframe);
-
-        const script = document.createElement('script');
-        script.src = 'https://tally.so/widgets/embed.js';
-        script.defer = true;
-        formContainer.appendChild(script);
+        if (window.Tally) {
+            Tally.loadEmbeds();
+        }
     }
 });
