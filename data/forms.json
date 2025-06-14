@@ -1,0 +1,9 @@
+{
+  "forms": [
+    {
+      "id": "form1",
+      "name": "Formulario de ejemplo",
+      "url": "forms/form1.html"
+    }
+  ]
+}

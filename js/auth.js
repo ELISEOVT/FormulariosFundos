@@ -1,17 +1,5 @@
-// Archivo auth.js actualizado para usar Firebase Authentication
-
-// Configuración de Firebase - REEMPLAZA ESTOS VALORES con los de tu proyecto Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDUItFotBBQjM4Uuh1DYkm5ARecZ_utooo",
-  authDomain: "formularios-fundos.firebaseapp.com",
-  projectId: "formularios-fundos",
-  storageBucket: "884518397631",
-  messagingSenderId: "tu-messaging-sender-id",
-  appId: "1:884518397631:web:85b14f9c0c1ee451fc880a"
-};
-
-// Inicializar Firebase
-firebase.initializeApp(firebaseConfig);
+// Funciones de autenticación de Firebase
+// La inicialización de Firebase se realiza en firebaseConfig.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar estado de autenticación cuando carga la página
